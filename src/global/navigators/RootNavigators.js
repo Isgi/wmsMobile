@@ -60,7 +60,6 @@ const ChecksheetStack = createStackNavigator({
   }),
   transitionConfig: () => ({
     transitionSpec: {
-      duration: 50,
       useNativeDriver: true
     },
     screenInterpolator: (props) => {
@@ -86,7 +85,6 @@ const GeneralStack = createStackNavigator({
   }),
   transitionConfig: () => ({
     transitionSpec: {
-      duration: 50,
       useNativeDriver: true
     },
     screenInterpolator: (props) => {
@@ -143,7 +141,6 @@ const UnauthorizedStack = createStackNavigator({
   },
   transitionConfig: () => ({
     transitionSpec: {
-      duration: 50,
       useNativeDriver: true
     },
     screenInterpolator: (props) => {
