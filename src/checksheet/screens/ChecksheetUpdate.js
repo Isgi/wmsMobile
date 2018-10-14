@@ -11,12 +11,12 @@ import { connect } from 'react-redux';
 
 import styles from '../stylesChecksheet';
 import ChecksheetForm from '../components/ChecksheetForm';
-import { updateProduct } from '../../global/redux/actions/actionChecksheet';
+import { updateChecksheet } from '../../global/redux/actions/actionChecksheet';
 import renderComponentAfterInteraction from '../../global/components/renderComponentAfterInteraction';
 
 
 const handleSubmit = props => (value) => {
-    props.dispatch(updateProduct(value))
+    props.dispatch(updateChecksheet(value))
     props.navigation.dispatch({
       type: 'Navigation/BACK'
     });
