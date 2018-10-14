@@ -22,7 +22,9 @@ class Checksheet extends Component<Props> {
 
   constructor(props) {
     super(props);
-    this.state = {selected: (new Map(): Map<string, boolean>)};
+    this.state = {
+      selected: (new Map(): Map<string, boolean>)
+    };
     props.navigation.setParams({ handleCreate: this.navigateToCreateChecksheet });
   }
 
@@ -53,7 +55,7 @@ class Checksheet extends Component<Props> {
           data={data}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
-          extraData={this.state}
+          extraData={this.props.checksheet}
         />
       </View>
     );
