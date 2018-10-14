@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import {
-  Icon,
-  FormLabel,
-  FormInput,
-  FormValidationMessage
-} from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 
 import styles from '../stylesComponents';
 
@@ -42,15 +37,14 @@ export default class InputText extends Component {
       keyboardType,
       iconName,
       iconType,
-      placeholder
+      placeholder,
+      multiline,
+      helper_message,
+      textHelper
     } = this.props;
     return (
       <View style={styles.formGroup}>
-
-        {/* <FormLabel>{label}</FormLabel> */}
-
         <Icon name={iconName} type="font-awesome" iconStyle={styles.iconTextInput} containerStyle={styles.iconContentTextInput} />
-
         <TextInput
           style={[styles.textInput, meta.touched && meta.error ? styles.bordertextInputError : null]}
           underlineColorAndroid="transparent"
@@ -62,6 +56,7 @@ export default class InputText extends Component {
           editable={editable}
           autoFocus={autoFocus}
           returnKeyType={returnKeyType}
+          multiline={multiline}
           textInputRef={this.ref()}
           autoCapitalize={autoCapitalize}
           value={input.value.toString()}
@@ -69,32 +64,11 @@ export default class InputText extends Component {
           secureTextEntry={this.state.secureTextEntry}
           onSubmitEditing={onSubmitEditing}
           maxLength={maxLength} />
-
-
-
         {meta.touched && meta.error
           ? <Text style={styles.textInputError}>{meta.error}</Text>
           : null}
 
-
-
-        {/* <FormInput
-          keyboardType={keyboardType}
-          disabled={disabled}
-          editable={editable}
-          autoFocus={autoFocus}
-          returnKeyType={returnKeyType}
-          textInputRef={this.ref()}
-          autoCapitalize={autoCapitalize}
-          value={input.value.toString()}
-          inputStyle={styles.inputText}
-          onChangeText={input.onChange}
-          secureTextEntry={this.state.secureTextEntry}
-          onSubmitEditing={onSubmitEditing}
-          maxLength={maxLength}
-        /> */}
-
-
+        {helper_message === true && <Text style={styles.textInputTextHelper}>{textHelper}</Text>}
         {/* {secureTextEntry
           ? <Icon
             name={this.state.secureTextEntry ? 'visibility' : 'visibility-off'}
@@ -103,12 +77,6 @@ export default class InputText extends Component {
             onPress={this.handleChangeVisibility}
           />
           : null} */}
-
-
-        {/* {meta.touched && meta.error
-          ? <FormValidationMessage>{meta.error}</FormValidationMessage>
-          : null} */}
-
 
       </View>
     );

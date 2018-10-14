@@ -8,7 +8,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
-  FlatList
+  FlatList,
+  Image,
+  Text
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -51,12 +53,22 @@ class Checksheet extends Component<Props> {
     const { data, isLoading } = this.props.checksheet;
     return (
       <View style={styles.container}>
-        <FlatList
-          data={data}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-          extraData={this.props.checksheet}
-        />
+
+        {data.length === 0 || data === [] ?
+          <View style={styles.contentEmpty} >
+            <Image source={require('./../../global/assets/img/empty-data.png')} style={styles.imageEmpty} />
+            <Text style={styles.textEmpty} >
+              {'Opsss.. Your data is blank.\nPlease click (+) button above to create new data.'}
+            </Text>
+          </View>
+          :
+          <FlatList
+            data={data}
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItem}
+            extraData={this.props.checksheet}
+          />
+        }
       </View>
     );
   }
