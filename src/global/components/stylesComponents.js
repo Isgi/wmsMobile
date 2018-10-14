@@ -8,6 +8,41 @@ const stylesComponents = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#bebebe'
   },
+  formGroup: {
+    marginBottom: 15,
+  },
+  textInput: {
+    paddingHorizontal: 0,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 40,
+    paddingRight: 40,
+    fontSize: 14,
+    color: 'rgba(0,0,0,1)',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.3)',
+    textAlignVertical: 'center',
+    height: 48,
+  },
+  bordertextInputError: {
+    borderBottomWidth: 2,
+    borderBottomColor: 'rgb(213, 0, 0)',
+  },
+  iconContentTextInput: {
+    position: 'absolute',
+    top: 13,
+    left: 5,
+  },
+  iconTextInput: {
+    fontSize: 20,
+    color: 'rgba(0,0,0,0.3)',
+  },
+  textInputError: {
+    marginTop: 3,
+    color: 'rgb(213, 0, 0)',
+    fontSize: 12,
+    backgroundColor: 'transparent',
+  },
   iconVisibility: {
     position: 'absolute',
     right: 20,

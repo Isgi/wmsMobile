@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements';
 import { Field, reduxForm, change } from 'redux-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import moment from 'moment';
+import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import styles from '../stylesChecksheet';
@@ -27,7 +28,7 @@ class ChecksheetForm extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.formState && this.props.formState.values && this.props.formState.values.serial) {
       if (this.props.formState.values.serial !== nextProps.formState.values.serial) {
-        if (typeof(nextProps.formState.values.serial) === 'string') {
+        if (typeof (nextProps.formState.values.serial) === 'string') {
           this.serial = nextProps.formState.values.serial.replace(' ', '').split(',');
           this.props.dispatch(change('checksheet', 'count', this.serial.length.toString()));
         } else {
@@ -66,32 +67,43 @@ class ChecksheetForm extends Component {
         scrollEnabled
         keyboardShouldPersistTaps="always"
         extraScrollHeight={90}
+        style={{ paddingHorizontal: 20, paddingTop: 10 }}
       >
         <Field
           name="tanggal"
+          iconName='calendar'
           component={InputText}
           label="Tanggal"
           validate={[required]}
           returnKeyType="next"
           editable={false}
         />
+
         <Field
           autoFocus
           name="checker"
+          iconName='user'
           component={InputText}
           label="Checker"
           validate={[required]}
           returnKeyType="next"
-
         />
-        <TouchableOpacity onPress={this.navigateToSelectNoDr()}>
+
+        <TouchableOpacity onPress={this.navigateToSelectNoDr()} style={styles.formGroup}>
+          <Icon name={'file'} type="font-awesome" iconStyle={styles.iconSelect} containerStyle={styles.iconContentSelect} />
           <View style={styles.fieldNoDr}>
-            <Text style={styles.buttonSetNoDr}>No. DR/</Text>
-            <Text>{this.state.no_dr.dr_id}</Text>
+            {this.state.no_dr === '' ?
+              <Text style={styles.placeholderSelect}>No. DR/</Text>
+              :
+              <Text style={styles.textSelect} >{this.state.no_dr.dr_id}</Text>
+            }
           </View>
+          <Icon name={'caret-down'} type="font-awesome" iconStyle={styles.iconSelect} containerStyle={styles.iconRightContentSelect} />
         </TouchableOpacity>
+
         <Field
           name="stock_name"
+          iconName='map-marker'
           component={InputText}
           label="Tujuan"
           editable={false}
@@ -99,13 +111,16 @@ class ChecksheetForm extends Component {
         />
         <Field
           name="ekspedisi"
+          iconName='ambulance'
           component={InputText}
           label="Ekspedisi"
           editable={false}
           returnKeyType="next"
         />
+
         <Field
           name="driver_name"
+          iconName='user'
           component={InputText}
           label="Driver"
           editable={false}
@@ -113,6 +128,7 @@ class ChecksheetForm extends Component {
         />
         <Field
           name="nopol"
+          iconName='barcode'
           component={InputText}
           label="Nopol"
           editable={false}
@@ -120,31 +136,43 @@ class ChecksheetForm extends Component {
         />
         <Field
           name="model"
+          iconName='clipboard'
           component={InputText}
           label="Model"
           returnKeyType="next"
         />
         <Field
           name="serial"
+          iconName='file'
           component={InputText}
           label="Serial"
           returnKeyType="next"
         />
         <Field
           name="count"
+          iconName='archive'
           component={InputText}
           label="Count"
           returnKeyType="next"
           editable={false}
         />
+
         <Button
           title="SUBMIT"
           backgroundColor="#666"
-          color="#fffefe"
+          color="#fff"
           loading={isLoading}
+          buttonStyle={{
+            width: '100%',
+            height: 45,
+            borderColor: "transparent",
+            borderWidth: 0,
+            borderRadius: 5
+          }}
           containerViewStyle={styles.buttonSubmit}
           onPress={this.props.handleSubmit(value => this.props.onSubmit({ ...value, no_dr: this.state.no_dr }))}
         />
+
       </KeyboardAwareScrollView>
     );
   }
