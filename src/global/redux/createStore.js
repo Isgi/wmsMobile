@@ -8,7 +8,7 @@ import reducers from './reducers';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth']
+  whitelist: ['auth', 'checksheet']
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

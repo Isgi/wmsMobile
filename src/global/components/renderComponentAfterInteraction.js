@@ -13,11 +13,11 @@ const renderComponentAfterInteraction = (ReadyComponent) => {
     }
 
     componentDidMount() {
-      InteractionManager.runAfterInteractions(() => {
+      setTimeout(() => {
         this.setState({
           didFinishInitialAnimation: true
         });
-      });
+      }, 50)
     }
 
     render() {
