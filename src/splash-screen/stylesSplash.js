@@ -8,8 +8,7 @@ const stylesSplash = StyleSheet.create({
     justifyContent: 'center'
   },
   logo: {
-    fontSize: 100,
-    color: '#666'
+    height: 50
   }
 });
 

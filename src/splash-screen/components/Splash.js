@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { View, StyleSheet, Image } from 'react-native';
 
 import styles from '../stylesSplash';
 
 const Splash = () => (
   <View style={styles.container} >
-    <Icon name="radio-button-checked" iconStyle={styles.logo} />
+    <Image source={require('../../global/assets/img/logo.jpg')} style={styles.logo} />
   </View>
 );
 
