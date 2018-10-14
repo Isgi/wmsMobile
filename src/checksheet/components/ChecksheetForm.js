@@ -144,6 +144,10 @@ class ChecksheetForm extends Component {
           name="serial"
           iconName='file'
           component={InputText}
+          multiline={true}
+          helper_message={true}
+          textHelper='Separated by using comma characters (",")'
+          maxLength={225}
           label="Serial"
           returnKeyType="next"
         />

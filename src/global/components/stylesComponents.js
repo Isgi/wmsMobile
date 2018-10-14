@@ -37,6 +37,12 @@ const stylesComponents = StyleSheet.create({
     fontSize: 20,
     color: 'rgba(0,0,0,0.3)',
   },
+  textInputTextHelper: {
+    marginTop: 3,
+    color: 'rgba(0,0,0,0.3)',
+    fontSize: 12,
+    backgroundColor: 'transparent',
+  },
   textInputError: {
     marginTop: 3,
     color: 'rgb(213, 0, 0)',

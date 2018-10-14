@@ -6,6 +6,22 @@ const stylesChecksheet = StyleSheet.create({
     backgroundColor: '#ffffff',
     // paddingHorizontal: 20
   },
+  contentEmpty: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    flex: 1,
+    width: 250,
+  },
+  imageEmpty: {
+    width: 150,
+    height: 150,
+    resizeMode: 'contain'
+  },
+  textEmpty: {
+    textAlign: 'center',
+    marginTop: 25
+  },
   fab: {
     position: 'absolute',
     right: 20,
@@ -36,7 +52,7 @@ const stylesChecksheet = StyleSheet.create({
   },
   placeholderSelect: {
     fontSize: 14,
-    color:'rgba(0,0,0,0.7)'
+    color: 'rgba(0,0,0,0.7)'
   },
   textSelect: {
     fontSize: 14,
