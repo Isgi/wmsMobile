@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, Keyboard } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-native-elements';
 
@@ -40,13 +40,14 @@ export default class InputText extends Component {
       placeholder,
       multiline,
       helper_message,
-      textHelper
+      textHelper,
+      style
     } = this.props;
     return (
       <View style={styles.formGroup}>
         <Icon name={iconName} type="font-awesome" iconStyle={styles.iconTextInput} containerStyle={styles.iconContentTextInput} />
         <TextInput
-          style={[styles.textInput, meta.touched && meta.error ? styles.bordertextInputError : null]}
+          style={[styles.textInput, meta.touched && meta.error ? styles.bordertextInputError : null, style]}
           underlineColorAndroid="transparent"
           underlineColorios="transparent"
           placeholderTextColor='rgba(0,0,0,0.7)'
@@ -98,4 +99,3 @@ InputText.propTypes = {
   maxLength: PropTypes.number,
   keyboardType: PropTypes.string
 };
-

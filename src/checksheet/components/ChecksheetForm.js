@@ -21,7 +21,7 @@ class ChecksheetForm extends Component {
       no_dr: props.initialValues && props.initialValues.no_dr ? props.initialValues.no_dr : ''
     };
     if (!props.initialValues || !props.initialValues.tanggal) {
-      props.dispatch(change('checksheet', 'tanggal', moment().format('YYYY-MM-DD')))
+      props.dispatch(change('checksheet', 'tanggal', moment().format('YYYY/MM/DD')))
     }
   }
 
@@ -150,6 +150,7 @@ class ChecksheetForm extends Component {
           maxLength={225}
           label="Serial"
           returnKeyType="next"
+          style={{height: 100}}
         />
         <Field
           name="count"
@@ -173,7 +174,7 @@ class ChecksheetForm extends Component {
             borderRadius: 5
           }}
           containerViewStyle={styles.buttonSubmit}
-          onPress={this.props.handleSubmit(value => this.props.onSubmit({ ...value, no_dr: this.state.no_dr }))}
+          onPress={this.props.handleSubmit(value => this.props.onSubmit({ ...value, no_dr: this.state.no_dr, serial: this.serial }))}
         />
 
       </KeyboardAwareScrollView>

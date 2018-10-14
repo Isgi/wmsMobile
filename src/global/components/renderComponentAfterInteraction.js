@@ -8,7 +8,7 @@ const renderComponentAfterInteraction = (ReadyComponent) => {
     constructor() {
       super();
       this.state = {
-        didFinishInitialAnimation: false
+        didFinishInitialAnimation: true
       };
     }
 

@@ -12,15 +12,41 @@ import { SubmissionError } from 'redux-form';
 
 import styles from '../stylesChecksheet';
 import ChecksheetForm from '../components/ChecksheetForm';
-import { createChecksheet } from '../../global/redux/actions/actionChecksheet';
+import { createChecksheet, getChecksheet } from '../../global/redux/actions/actionChecksheet';
 import renderComponentAfterInteraction from '../../global/components/renderComponentAfterInteraction';
 import objectId from '../../global/utils/objectId';
 
 
 const handleSubmit = props => (value) => {
-  props.dispatch(createChecksheet({...value, _id: objectId()}));
-  props.navigation.dispatch({
-    type: 'Navigation/BACK'
+  const cs_detail = [];
+  value.serial.forEach(detail => {
+    cs_detail.push({
+      productid: value.model,
+      serialnumber: value.detail
+    })
+  })
+  const rebuildValue = {
+    data: {
+      cs: {
+        sj_id: '',
+        dr_id: value.no_dr.dr_id,
+        cs_date: value.tanggal,
+        checker: value.checker
+      },
+      cs_detail
+    }
+  }
+  props.dispatch(createChecksheet(rebuildValue))
+  .then(() => {
+    props.dispatch(getChecksheet())
+    .then(() => {
+      props.navigation.dispatch({
+        type: 'Navigation/BACK'
+      });
+    })
+  })
+  .catch(() => {
+    alert('Unknown error.')
   });
 };
 

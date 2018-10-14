@@ -11,13 +11,14 @@ import { deleteChecksheet } from '../../global/redux/actions/actionChecksheet';
 class ChecksheetItem extends Component {
 
   handleEdit = item => () => {
-    this.props.dispatch({
-      type: 'Navigation/NAVIGATE',
-      routeName: 'ChecksheetUpdate',
-      params: {
-        item: this.props.item
-      }
-    });
+    alert('Coming soon.');
+    // this.props.dispatch({
+    //   type: 'Navigation/NAVIGATE',
+    //   routeName: 'ChecksheetUpdate',
+    //   params: {
+    //     item: this.props.item
+    //   }
+    // });
   }
 
   hanldeDelete = id => () => {
@@ -25,15 +26,16 @@ class ChecksheetItem extends Component {
   }
 
   handleConfirmDelete = item => () => {
-    Alert.alert(
-      'Confirm delete',
-      `Are you sure you want to delete ${item.checker} Checksheet?`,
-      [
-        { text: 'Cancel', onPress: () => { }, style: 'cancel' },
-        { text: 'OK', onPress: this.hanldeDelete(item._id) }
-      ],
-      { cancelable: false }
-    );
+    alert('Coming soon.');
+    // Alert.alert(
+    //   'Confirm delete',
+    //   `Are you sure you want to delete ${item.checker} Checksheet?`,
+    //   [
+    //     { text: 'Cancel', onPress: () => { }, style: 'cancel' },
+    //     { text: 'OK', onPress: this.hanldeDelete(item._id) }
+    //   ],
+    //   { cancelable: false }
+    // );
   }
 
   handleMorePress = () => {
@@ -53,7 +55,7 @@ class ChecksheetItem extends Component {
   }
 
   render() {
-    const { checker, tanggal } = this.props.item;
+    const { cs_id, tanggal } = this.props.item;
     return (
       <ListItem
         roundAvatar
@@ -61,13 +63,13 @@ class ChecksheetItem extends Component {
           <Avatar
             medium
             rounded
-            title={labelAvatar(checker)}
+            title={labelAvatar(cs_id)}
             containerStyle={{
               backgroundColor: `#${randomColorStr(tanggal)}`
             }}
           />
         )}
-        title={checker}
+        title={cs_id}
         subtitle={tanggal}
         rightIcon={{ name: 'more-vert' }}
         onPressRightIcon={this.handleMorePress}

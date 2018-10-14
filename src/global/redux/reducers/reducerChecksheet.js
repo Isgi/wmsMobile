@@ -8,9 +8,12 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
 
-    case 'CREATE_CHECKSHEET' :
-      state.data.push(action.payload);
+    case 'CREATE_CHECKSHEET_PENDING' :
+      return { ...state, isLoading: true };
+    case 'CREATE_CHECKSHEET_FULFILLED' :
       return { ...state, isLoading: false };
+    case 'CREATE_CHECKSHEET_REJECTED' :
+      return { ...state, error: action.payload.data, isLoading: false };
 
     case 'UPDATE_CHECKSHEET': {
       const newResultsAfterUpdate = state.data.map((result) => {
@@ -22,8 +25,13 @@ export default (state = initialState, action) => {
       return { ...state, data: newResultsAfterUpdate, isLoading: false };
     }
 
-    case 'GET_CHECKSHEET':
-      return state;
+    case 'GET_CHECKSHEET_PENDING':
+      return {...state, isLoading: true};
+    case 'GET_CHECKSHEET_FULFILLED':
+      const { data } = action.payload.data;
+      return {...state, data, isLoading: false};
+    case 'GET_CHECKSHEET_REJECTED':
+      return {...state, error: action.payload.data, isLoading: false};
 
     case 'DELETE_CHECKSHEET': {
       const newResultsAfterDelete = state.data.filter(result => result._id !== action.payload);

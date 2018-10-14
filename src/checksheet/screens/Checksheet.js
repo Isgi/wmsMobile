@@ -54,7 +54,7 @@ class Checksheet extends Component<Props> {
     return (
       <View style={styles.container}>
 
-        {data.length === 0 || data === [] ?
+        {data.length === 0 && !isLoading ?
           <View style={styles.contentEmpty} >
             <Image source={require('./../../global/assets/img/empty-data.png')} style={styles.imageEmpty} />
             <Text style={styles.textEmpty} >
@@ -64,6 +64,8 @@ class Checksheet extends Component<Props> {
           :
           <FlatList
             data={data}
+            onRefresh={this.getData}
+            refreshing={isLoading}
             keyExtractor={this._keyExtractor}
             renderItem={this._renderItem}
             extraData={this.props.checksheet}
