@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Keyboard } from 'react-native';
 import { Button } from 'react-native-elements';
 import { Field, reduxForm, change } from 'redux-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -66,6 +66,9 @@ class ChecksheetForm extends Component {
         scrollEnabled
         keyboardShouldPersistTaps="always"
         extraScrollHeight={90}
+        onKeyboardWillShow={(frames: Object) => {
+          Keyboard.dismiss();
+        }}
       >
         <Field
           name="tanggal"
